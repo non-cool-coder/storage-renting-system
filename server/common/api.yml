@@ -1,0 +1,671 @@
+openapi: 3.0.1
+info:
+  title: StoreSamadhan
+  description: Store Samadhan App
+  version: 1.0.0
+servers:
+  - url: /api/v1
+
+tags:
+  - name: Auth
+    description: Authentication endpoints
+  - name: User
+    description: User endpoints
+
+paths:
+  /auth/getUserDetails:
+    get:
+      tags:
+        - Auth
+      security:
+        - Bearer: []
+      summary: Get user details
+      description: Get user details
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetUserDetailsResponse"
+  /auth/signupUser:
+    post:
+      tags:
+        - Auth
+      security:
+        - Bearer: []
+      summary: Signup a new user
+      description: Signup a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignupUser"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /auth/signupStorage:
+    post:
+      tags:
+        - Auth
+      security:
+        - Bearer: []
+      summary: Signup a new storage
+      description: Signup a new storage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignupStorage"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /user/bookings:
+    get:
+      tags:
+        - User
+      security:
+        - Bearer: []
+      summary: Get user bookings
+      description: Get user bookings
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetBookingsResponse"
+  /user/updateUser:
+    put:
+      tags:
+        - User
+      security:
+        - Bearer: []
+      summary: Update user
+      description: Update user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUser"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /user/addRating:
+    post:
+      tags:
+        - User
+      security:
+        - Bearer: []
+      summary: Add rating
+      description: Add rating
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddRating"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /storage/bookings:
+    get:
+      tags:
+        - Storage
+      security:
+        - Bearer: []
+      summary: Get bookings
+      description: Get bookings
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetBookingsResponse"
+  /storage/getStorage:
+    get:
+      tags:
+        - Storage
+      security:
+        - Bearer: []
+      summary: Get storage details
+      description: Get storage details
+      parameters:
+        - name: storageId
+          in: query
+          description: Storage Id
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetStorageResponse"
+  /storage/getFilteredStorage:
+    get:
+      tags:
+        - Storage
+      security:
+        - Bearer: []
+      summary: Get filtered storage
+      description: Get filtered storage
+      parameters:
+        - name: filter
+          in: query
+          description: Filter storage
+          schema:
+            type: string
+        - name: values
+          in: query
+          description: Filter values
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FetchAllStorages"
+  /storage/updateStorage:
+    put:
+      tags:
+        - Storage
+      security:
+        - Bearer: []
+      summary: Update storage
+      description: Update storage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateStorage"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+  /booking/initializeBooking:
+    post:
+      tags:
+        - Booking
+      security:
+        - Bearer: []
+      summary: Initialize booking
+      description: Initialize booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InitializeBooking"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InitializeBookingResponse"
+  /booking/verifyBooking:
+    post:
+      tags:
+        - Booking
+      security:
+        - Bearer: []
+      summary: Verify booking
+      description: Verify booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VerifyBooking"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      description: Provide a valid JWT token
+  schemas:
+    GetUserDetailsResponse:
+      type: object
+      properties:
+        email:
+          type: string
+        createdAt:
+          type: object
+          properties:
+            _seconds:
+              type: number
+            _nanoseconds:
+              type: number
+        city:
+          type: string
+        state:
+          type: string
+        phone:
+          type: number
+        name:
+          type: string
+        profilePicture:
+          type: string
+    SignupUser:
+      type: object
+      required:
+        - name
+        - email
+        - state
+        - city
+      properties:
+        name:
+          type: string
+        phone:
+          type: number
+        email:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+    SuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    SignupStorage:
+      type: object
+      required:
+        - name
+        - email
+        - address
+        - location
+        - state
+        - city
+        - pincode
+      properties:
+        name:
+          type: string
+        phone:
+          type: number
+        email:
+          type: string
+        address:
+          type: string
+        location:
+          type: string
+        aadhar:
+          type: number
+        pan:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        pincode:
+          type: number
+    UpdateUser:
+      type: object
+      properties:
+        userData:
+          type: object
+          properties:
+            name:
+              type: string
+            phone:
+              type: number
+            email:
+              type: string
+            addresses:
+              type: array
+              items:
+                type: object
+                properties:
+                  address:
+                    type: string
+                  pincode:
+                    type: number
+            state:
+              type: string
+            city:
+              type: string
+    AddRating:
+      type: object
+      properties:
+        rating:
+          type: number
+        storageId:
+          type: string
+        userName:
+          type: string
+        review:
+          type: string
+    GetBookingsResponse:
+      type: object
+      properties:
+        bookings:
+          type: array
+          items:
+            type: object
+            properties:
+              storageId:
+                type: string
+              userId:
+                type: string
+              storageName:
+                type: string
+              address:
+                type: string
+              userContact:
+                type: number
+              image:
+                type: string
+              fromDate:
+                type: object
+                properties:
+                  _seconds:
+                    type: number
+                  _nanoseconds:
+                    type: number
+              toDate:
+                type: object
+                properties:
+                  _seconds:
+                    type: number
+                  _nanoseconds:
+                    type: number
+              paid:
+                type: boolean
+              amount:
+                type: number
+              boxes:
+                type: number
+              orderId:
+                type: string
+    UpdateStorage:
+      type: object
+      properties:
+        storageData:
+          type: object
+          properties:
+            name:
+              type: string
+            phone:
+              type: number
+            email:
+              type: string
+            address:
+              type: string
+            location:
+              type: string
+            aadhar:
+              type: number
+            pan:
+              type: string
+            state:
+              type: string
+            city:
+              type: string
+            pincode:
+              type: number
+            images:
+              type: array
+              items:
+                type: string
+            pricing:
+              type: object
+              properties:
+                columns:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      header:
+                        type: string
+                      accessor:
+                        type: string
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      boxes:
+                        type: string
+                      cold:
+                        type: number
+                      normal:
+                        type: number
+    GetStorageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        location:
+          type: string
+        aadhar:
+          type: number
+        pan:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        pincode:
+          type: number
+        images:
+          type: array
+          items:
+            type: string
+        pricing:
+          type: object
+          properties:
+            columns:
+              type: array
+              items:
+                type: object
+                properties:
+                  header:
+                    type: string
+                  accessor:
+                    type: string
+            data:
+              type: array
+              items:
+                type: object
+                properties:
+                  boxes:
+                    type: string
+                  cold:
+                    type: number
+                  normal:
+                    type: number
+        ratings:
+          type: object
+          properties:
+            avgRating:
+              type: number
+            totalReviews:
+              type: number
+            reviews:
+              type: array
+              items:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                  review:
+                    type: string
+                  rating:
+                    type: number
+                  userName:
+                    type: string
+                  createdAt:
+                    type: object
+                    properties:
+                      _seconds:
+                        type: number
+                      _nanoseconds:
+                        type: number
+    FetchAllStorages:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          email:
+            type: string
+          address:
+            type: string
+          location:
+            type: string
+          aadhar:
+            type: number
+          pan:
+            type: string
+          state:
+            type: string
+          city:
+            type: string
+          pincode:
+            type: number
+          images:
+            type: array
+            items:
+              type: string
+          pricing:
+            type: object
+            properties:
+              columns:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    header:
+                      type: string
+                    accessor:
+                      type: string
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    boxes:
+                      type: string
+                    cold:
+                      type: number
+                    normal:
+                      type: number
+          ratings:
+            type: object
+            properties:
+              avgRating:
+                type: number
+              totalReviews:
+                type: number
+              reviews:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    userId:
+                      type: string
+                    review:
+                      type: string
+                    rating:
+                      type: number
+                    userName:
+                      type: string
+                    createdAt:
+                      type: object
+                      properties:
+                        _seconds:
+                          type: number
+                        _nanoseconds:
+                          type: number
+    InitializeBooking:
+      type: object
+      required:
+        - storageId
+        - boxes
+        - amount
+        - storageType
+        - duration
+      properties:
+        storageId:
+          type: string
+        boxes:
+          type: number
+        amount:
+          type: number
+        storageType:
+          type: string
+        duration:
+          type: number
+        userName:
+          type: string
+    InitializeBookingResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+        bookingId:
+          type: string
+    VerifyBooking:
+      type: object
+      required:
+        - razorpayPaymentId
+        - razorpaySignature
+        - orderId
+        - bookingId
+      properties:
+        razorpayPaymentId:
+          type: string
+        razorpaySignature:
+          type: string
+        orderId:
+          type: string
+        bookingId:
+          type: string
