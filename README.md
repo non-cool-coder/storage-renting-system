@@ -1,129 +1,53 @@
-![Logo](https://res.cloudinary.com/connect-x/image/upload/v1649589432/Logo_j9js3h.png)
+# Storage Renting System
 
-## Hosted URL
-
-https://store-samadhan.netlify.app/
-
-
-## Backend URL
-
-https://store-samadhan-backend.centralindia.cloudapp.azure.com/api-explorer/
-
-## Figma URL
-
-https://www.figma.com/file/LzGhPtx8m6JbajT56UhgaS/Store-Samadhan-UI
-
-Welcome to StoreSamadhan, A Portal which provides you places where you can store you goods for days, weeks, months and year at very pocket-friendly prices.
+Welcome to the Storage Renting System, a versatile storage solution that allows users to find storage facilities for their goods, whether for days, weeks, months, or even years, all at affordable rates.
 
 ## Objective
 
-In this high-moving life where we have to move from one place to another for jobs, education etc. many times and in this, we have to carry extra luggage in the journey e.g. Student they move from their place to home several times in a year for some days, months etc. either they have to carry extra luggage or pay rents for just storing their luggage in the rooms. To solve this problem, we made StoreSamadhan.
+The Storage Renting System addresses the challenge of moving goods frequently due to various life circumstances, such as job relocations or educational pursuits. It offers a convenient solution for storing belongings temporarily without the need to transport them repeatedly.
 
 ## What does it do?
 
 ### User
 
-- When a user registers, they will be redirected to the home page.
-- They should enter all the required fields in the profile section.
-- They can search storages just by entering pincode or city of their choice.
-- They can review storages by their rating and price.
-- After selecting storage they have to pay price and have access the storage provider details.
+- Users can register and access the platform's home page.
+- They can complete their profile by providing necessary information.
+- Search for storage facilities by entering a pincode or city.
+- Sort and review storage options based on ratings and prices.
+- After selecting a storage facility, users can make payments and access the details of the storage provider.
 
 ### Storage Provider
 
-- When a storage provider register, they required to enter some essential details like PAN number etc for security purposes.
-- They can decide the price for different sizes of boxes, can edit their tags to be searched by users.
-- They can check their bookings and the revenue they have made using these bookings
-- They can update their profile section details including their embedded Url,address, contact number etc.
+- Storage providers can register by providing essential details, including a PAN number for security.
+- They have the flexibility to set prices for different box sizes and edit tags to enhance discoverability.
+- Access booking information and track revenue generated from bookings.
+- Update their profile details, including embedded URLs, addresses, and contact numbers.
 
 ## Development Setup
 
-### Frontend
+This guide will help you set up the backend of the Storage Renting System for local development.
 
-- Fork the repository
-- Clone the repository
+1. **Clone the Backend Repository:**
 
-```sh
-git clone https://github.com/Store-Samadhan/Frontend.git
-```
+   Clone the backend repository to your local machine using the following command:
 
-- Open the folder containing the cloned repository
-- Install the required packages, libraries and dependencies
+   ```sh
+   git clone https://github.com/YourGitHubUsername/storage-renting-system.git
 
-```sh
-npm install
-```
+2. **Navigate to the Backend Repository Folder:**
 
-- Custom API keys can be set up in a .env file. We have added an example of env in .env.example file.
-- Run the project locally to access the frontend functionality of the website
+   ```sh
+   cd storage-renting-system
 
-```sh
-npm start
-```
+3. **Install Dependencies:**
 
-### Backend
+   ```sh
+   npm install
 
-- Fork the repository
-- Clone the repository
+4. **Set up Environment Variables:**
+ - Configure custom API keys by creating a .env file in the project root directory. You can use .env.example as a reference.
 
-```sh
-git clone https://github.com/Store-Samadhan/Backend.git
-```
+5. **Start the Development Server:**
 
-- Open the folder containing the cloned repository
-- Install the required packages, libraries and dependencies
-
-```sh
-npm install
-```
-
-- Custom API keys can be set up in a .env file. We have added an example of env in .env.example file.
-- Run the project locally to access the frontend functionality of the website
-
-```sh
-npm dev
-```
-
-## Screenshots
-
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/1.png)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/2.PNG)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/3.png)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/4.png)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/5.png)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/11.png)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/6.png)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/8.png)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/7.png)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/9.png)
-![App Screenshot](https://github.com/Store-Samadhan/Frontend/blob/main/src/Assets/ReadmeAssets/10.png)
-
-## 🔗 Know the Project Creater
-
-Akash Gupta
-
-[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/akashgupta1909)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/akash-gupta-1909/)
-
-Harshil Mendpara
-
-[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/HarshilMendpara)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/harshil-mendpara/)
-
-Ujjawal Gupta
-
-[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/UjjawalGupta30)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ujjawalgupta30/)
-
-Raj Varsani
-
-[![portfolio](https://img.shields.io/badge/github_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/RajVarsani)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/varsani-raj/)
-
-## Demo
-
-https://www.youtube.com/watch?v=g9Hve5jOC8g
-
-## License
-
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+   ```sh
+   npm run dev
